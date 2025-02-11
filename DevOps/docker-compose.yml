@@ -1,0 +1,16 @@
+version: '3.1'
+
+services:
+  db:
+    image: mysql-test
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./:/docker-entrypoint-initdb.d
+
+  adminer:
+    image: public.ecr.aws/docker/library/adminer:standalone
+    restart: always
+    ports:
+      - 8080:8080
