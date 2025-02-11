@@ -10,5 +10,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
+          cd DevOps
           docker build -t mysql-test .
           docker compose up --build -d
