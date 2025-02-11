@@ -1,0 +1,14 @@
+name: Build and Test Application
+on:  
+  push:
+    branches: [main]
+  pull request:
+    branches: [main]
+jobs:
+  build_test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkoutv2
+      - run: |
+        docker build -t mysql-test .
+        docker compose up --build -d
